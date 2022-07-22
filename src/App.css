@@ -3,8 +3,9 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 100%;
   pointer-events: none;
+  position: relative;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -15,11 +16,11 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  height: 50px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -35,4 +36,41 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.app--nav-bar ul {
+  white-space: nowrap;
+  display: flex;
+  flex-direction: row;
+}
+.app--nav-bar ul li {
+  list-style-type: none;
+  font-size: 1rem;
+  padding: 5px;
+}
+.app--nav-bar ul li a {
+  color: white;
+  text-decoration: none;
+}
+.app--nav-bar ul li a:hover {
+  color: aqua;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

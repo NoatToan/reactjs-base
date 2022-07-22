@@ -1,9 +1,28 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe('app UI', () => {
+  test('app have HOME nav links', () => {
+    render(<App />);
+
+    const linkHome = screen.getByText(/home/i);
+    expect(linkHome).toBeInTheDocument();
+  });
+
+  test('app have LOGIN nav links', () => {
+    render(<App />);
+
+    const linkLogin = screen.getByText(/login/i);
+    expect(linkLogin).toBeInTheDocument();
+  });
+
+  test('app have CONTENT index welcome', () => {
+    render(<App />);
+
+    expect(
+      screen.getByRole('heading', {
+        name: /welcome/i,
+      })
+    ).toBeInTheDocument();
+  });
 });
