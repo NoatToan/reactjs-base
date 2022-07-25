@@ -25,7 +25,8 @@ export const Form = ({ onSubmit }: FormProps) => {
     <Box
       component='form'
       noValidate
-      onSubmit={() => {
+      onSubmit={(event: any) => {
+        event.preventDefault();
         formik.handleSubmit();
       }}
       sx={{ mt: 1 }}

@@ -1,7 +1,10 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { useUser } from '../../hooks/useUser';
+import { useNavigate } from 'react-router-dom';
+import { useSnackbar } from 'notistack';
 
 function Copyright() {
   return (
@@ -14,11 +17,24 @@ function Copyright() {
 }
 
 export const Home = (props: any) => {
+  const { enqueueSnackbar } = useSnackbar();
+  const { userState } = useUser();
+  const navigator = useNavigate();
+
+  useEffect(() => {
+    if (!userState?.user) {
+      enqueueSnackbar('Unauthorized', { variant: 'error' });
+
+      navigator('/login');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Container maxWidth='sm'>
       <Box sx={{ my: 4 }}>
         <Typography variant='h4' component='h1' gutterBottom>
-          Welcome {props.contextData?.auth?.email}
+          Welcome {userState?.user?.email}
         </Typography>
         <Copyright />
       </Box>

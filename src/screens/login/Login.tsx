@@ -10,11 +10,14 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
 import { Form } from './components/Form';
+import { useUser } from '../../hooks/useUser';
 const theme = createTheme();
 
 export const Login = (props: any) => {
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
+  const { login } = useUser();
+
   return (
     <ThemeProvider theme={theme}>
       <Grid container component='main' sx={{ height: 'calc(100vh - 50px)' }}>
@@ -62,11 +65,19 @@ export const Login = (props: any) => {
             }}
           >
             <Form
-              onSubmit={(values: any) => {
-                props.setGlobalContext({ auth: values });
-                enqueueSnackbar('Hello ToanNT', { variant: 'success' });
-
-                navigate('/');
+              onSubmit={({ email, password }) => {
+                login(
+                  { email, password },
+                  ({ status, data }: any) => {
+                    enqueueSnackbar(`Hello ${data?.email}`, {
+                      variant: 'success',
+                    });
+                    navigate('/');
+                  },
+                  (error: any) => {
+                    enqueueSnackbar('Unexpected error', { variant: 'error' });
+                  }
+                );
               }}
             />
           </Box>
