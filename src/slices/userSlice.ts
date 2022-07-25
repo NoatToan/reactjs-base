@@ -19,7 +19,7 @@ export const userSlice = createSlice({
   reducers: {
     setUser: (state: any, action: any) => {
       const { data }: any = action.payload;
-      
+
       return { ...state, user: data };
     },
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -27,7 +27,7 @@ export const userSlice = createSlice({
       return state;
     },
 
-    login: (state: any, payload: any) => {
+    login: (state: any, action: any) => {
       return state;
     },
   },

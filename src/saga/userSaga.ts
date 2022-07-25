@@ -2,7 +2,16 @@ import { call, put } from 'redux-saga/effects';
 import userAPI from '../api/userAPI';
 import { userActions } from '../slices/userSlice';
 
-export function* getUserSaga({ type, payload }: any): any {
+interface sagaPayload {
+  type: string;
+  payload: {
+    params: any;
+    onSuccess: (response: any) => void;
+    onError: (error: any) => void;
+  };
+}
+
+export function* getUserSaga({ type, payload }: sagaPayload): any {
   const { params, onSuccess, onError } = payload;
 
   const res = yield call(userAPI.getAuth);
@@ -13,7 +22,7 @@ export function* getUserSaga({ type, payload }: any): any {
   onError(res);
 }
 
-export function* userLoginSaga({ type, payload }: any): any {
+export function* userLoginSaga({ type, payload }: sagaPayload): any {
   const { params, onSuccess, onError } = payload;
 
   const res = yield call(userAPI.login, params);

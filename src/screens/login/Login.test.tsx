@@ -6,16 +6,18 @@ import userEvent from '@testing-library/user-event';
 
 import { BrowserRouter } from 'react-router-dom';
 import App from '../../App';
+import { Provider } from 'react-redux';
+import { store } from '../../store';
 
 describe('login UI', () => {
-  test('navigate from home to login', async () => {
+  test('default login screen', async () => {
     render(
-      <SnackbarProvider>
-        (<App />)
-      </SnackbarProvider>
+      <Provider store={store}>
+        <SnackbarProvider>
+          (<App />)
+        </SnackbarProvider>
+      </Provider>
     );
-    await userEvent.click(screen.getByText(/Login/i));
-
     expect(screen.getByRole(/submit/i)).toBeInTheDocument();
     expect(screen.getByRole(/submit/i)).toBeEnabled();
 
@@ -24,16 +26,18 @@ describe('login UI', () => {
 
     expect(
       screen.getByRole('heading', {
-        name: /welcome/i,
+        name: /login/i,
       })
     ).toBeInTheDocument();
   });
 
   test('login functional - submit', async () => {
     render(
-      <SnackbarProvider>
-        (<Login />)
-      </SnackbarProvider>,
+      <Provider store={store}>
+        <SnackbarProvider>
+          (<Login />)
+        </SnackbarProvider>
+      </Provider>,
       { wrapper: BrowserRouter }
     );
 
@@ -54,9 +58,11 @@ describe('login UI', () => {
 describe('login UX', () => {
   test('loggin success', async () => {
     render(
-      <SnackbarProvider>
-        <Login />
-      </SnackbarProvider>,
+      <Provider store={store}>
+        <SnackbarProvider>
+          <Login />
+        </SnackbarProvider>
+      </Provider>,
       { wrapper: BrowserRouter }
     );
 
@@ -65,9 +71,11 @@ describe('login UX', () => {
   });
   test('loggin failed', async () => {
     render(
-      <SnackbarProvider>
-        (<Login />)
-      </SnackbarProvider>,
+      <Provider store={store}>
+        <SnackbarProvider>
+          (<Login />)
+        </SnackbarProvider>
+      </Provider>,
       { wrapper: BrowserRouter }
     );
 
