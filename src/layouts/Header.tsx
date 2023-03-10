@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { useUser } from '../hooks/useUser';
 import logo from '../logo.svg';
 
 export const Header = () => {

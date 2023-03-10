@@ -1,9 +1,9 @@
 {
-	"folders": [
-		{
-			"name": "reactjs-material",
-			"path": "."
-		}
-	],
-	"settings": {}
+  "folders": [
+    {
+      "name": "reactjs-material",
+      "path": "."
+    }
+  ],
+  "settings": {}
 }
