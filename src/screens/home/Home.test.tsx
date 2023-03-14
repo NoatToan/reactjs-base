@@ -1,14 +1,14 @@
 import '@testing-library/jest-dom';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { SnackbarProvider } from 'notistack';
-import userEvent from '@testing-library/user-event';
 
 import { Provider } from 'react-redux';
 import { store } from '../../store';
-import userSlice, { userActions, UserState } from '../../slices/userSlice';
-import { Home } from './Home';
+import userSlice, { UserState } from '../../react-slices/userSlice';
 import { BrowserRouter } from 'react-router-dom';
-import { Login } from '../login/Login';
+import React from 'react';
+
+const Home = React.lazy(() => import('./Home'));
 
 describe('home UI', () => {
   test('default home screen', async () => {

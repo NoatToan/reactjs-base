@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { useUser } from '../../hooks/useUser';
+import { useUser } from '../../react-hooks/useUser';
 import { useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 
@@ -16,7 +16,7 @@ function Copyright() {
   );
 }
 
-export const Home = (props: any) => {
+const Home = () => {
   const { enqueueSnackbar } = useSnackbar();
   const { userState } = useUser();
   const navigator = useNavigate();
@@ -41,3 +41,5 @@ export const Home = (props: any) => {
     </Container>
   );
 };
+
+export default Home;

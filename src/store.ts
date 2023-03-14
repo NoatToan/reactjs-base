@@ -4,9 +4,9 @@ import {
   Action,
   getDefaultMiddleware,
 } from '@reduxjs/toolkit';
-import userReducer from './slices/userSlice';
+import userReducer from './react-slices/userSlice';
 import createSagaMiddleware from 'redux-saga';
-import rootSaga from './saga';
+import rootSaga from './react-saga/rootSaga';
 
 // disalbe thunk and add redux-saga middleware
 const sagaMiddleware = createSagaMiddleware();

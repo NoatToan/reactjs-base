@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { useUser } from '../hooks/useUser';
 import logo from '../logo.svg';
 
 export const Header = () => {
@@ -10,6 +9,8 @@ export const Header = () => {
         <ul>
           <li>
             <Link to='/'>Home</Link>
+            <Link to='/about'>About</Link>
+            <Link to='/cv'>CV</Link>
           </li>
         </ul>
       </div>
