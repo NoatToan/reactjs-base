@@ -16,7 +16,7 @@ function Copyright() {
   );
 }
 
-export const Home = (props: any) => {
+const Home = () => {
   const { enqueueSnackbar } = useSnackbar();
   const { userState } = useUser();
   const navigator = useNavigate();
@@ -41,3 +41,5 @@ export const Home = (props: any) => {
     </Container>
   );
 };
+
+export default Home;

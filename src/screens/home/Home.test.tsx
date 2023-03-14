@@ -5,8 +5,10 @@ import { SnackbarProvider } from 'notistack';
 import { Provider } from 'react-redux';
 import { store } from '../../store';
 import userSlice, { UserState } from '../../react-slices/userSlice';
-import { Home } from './Home';
 import { BrowserRouter } from 'react-router-dom';
+import React from 'react';
+
+const Home = React.lazy(() => import('./Home'));
 
 describe('home UI', () => {
   test('default home screen', async () => {
